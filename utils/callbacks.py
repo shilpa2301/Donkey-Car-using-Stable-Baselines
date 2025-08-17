@@ -251,7 +251,14 @@ class LapTimeCallback(BaseCallback):
         output_formats = self.logger.output_formats
         # Save reference to tensorboard formatter object
         # note: the failure case (not formatter found) is not handled here, should be done with try/except.
-        self.tb_formatter = next(formatter for formatter in output_formats if isinstance(formatter, TensorBoardOutputFormat))
+
+        #shilpa donkeycar
+        # self.tb_formatter = next(formatter for formatter in output_formats if isinstance(formatter, TensorBoardOutputFormat))
+        try:
+            self.tb_formatter = next(formatter for formatter in output_formats if isinstance(formatter, TensorBoardOutputFormat))
+        except StopIteration:
+            self.tb_formatter = None  # Fallback if no TensorBoard formatter is found
+
 
     def _on_step(self) -> bool:
         lap_count = self.locals["infos"][0]["lap_count"]

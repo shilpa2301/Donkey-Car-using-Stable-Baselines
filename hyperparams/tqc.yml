@@ -1,13 +1,15 @@
 ## Custom envs
-donkey-mountain-track-v0: &defaults
+donkey-generated-roads-v0: &defaults
+# donkey-mountain-track-v0: &defaults
   # Normalize AE (+ the rest)
   normalize: "{'norm_obs': True, 'norm_reward': False}"
   env_wrapper:
     - gym.wrappers.time_limit.TimeLimit:
         max_episode_steps: 10000
-    - ae.wrapper.AutoencoderWrapper
-    - utils.wrappers.HistoryWrapper:
-        horizon: 2
+    - ae.wrapper.AutoencoderWrapper:
+        ae_path: "/home/smukh039/work/zoo_repo/rl-baselines3-zoo/ae_model_pkls/icra_generated_roads_ae_model.pkl"
+    # - utils.wrappers.HistoryWrapper:
+    #     horizon: 2
   callback:
     - utils.callbacks.ParallelTrainCallback:
         gradient_steps: 200

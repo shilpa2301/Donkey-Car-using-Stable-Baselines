@@ -11,6 +11,9 @@ import seaborn
 import torch as th
 from stable_baselines3.common.utils import set_random_seed
 
+#shilpa donkeycar
+from gym.envs.registration import register
+
 try:
     from d3rlpy.algos import AWAC, AWR, BC, BCQ, BEAR, CQL, CRR, TD3PlusBC
     from d3rlpy.models.encoders import VectorEncoderFactory
@@ -166,6 +169,11 @@ if __name__ == "__main__":  # noqa: C901
     # Going through custom gym packages to let them register in the global registory
     for env_module in args.gym_packages:
         importlib.import_module(env_module)
+
+    #shilpa donkey car
+    register(id="donkey-generated-roads-v0", entry_point="gym_donkeycar.envs.donkey_env:GeneratedRoadsEnv")
+    # register(id="donkey-mountain-track-v0", entry_point="gym_donkeycar.envs.donkey_env:MountainTrackEnv")
+
 
     env_id = args.env
     registered_envs = set(gym.envs.registry.env_specs.keys())  # pytype: disable=module-attr

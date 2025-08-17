@@ -30,6 +30,9 @@ except ImportError:
 
 try:
     import gym_donkeycar  # pytype: disable=import-error
+    # register(id="donkey-generated-roads-v0", entry_point="gym_donkeycar.envs.donkey_env:GeneratedRoadsEnv")
+    # register(id="donkey-mountain-track-v0", entry_point="gym_donkeycar.envs.donkey_env:MountainTrackEnv")
+
 except ImportError:
     gym_donkeycar = None
 

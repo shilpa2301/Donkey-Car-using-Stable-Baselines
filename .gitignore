@@ -19,3 +19,4 @@ hub
 *.mp4
 *.json
 *.csv
+ae_model_pkls/
