@@ -755,7 +755,7 @@ class DonkeyUnitySimHandler(IMesgHandler):
             # self.over = True
             pass
         elif math.fabs(self.cte) >= self.max_cte:
-            print(f"game over: cte {self.cte}")
+            # print(f"game over: cte {self.cte}")
             logger.debug(f"game over: cte {self.cte}")
             self.over = True
         elif self.hit != "none":

@@ -14,7 +14,7 @@ from stable_baselines3.common.utils import set_random_seed
 import utils.import_envs  # noqa: F401 pylint: disable=unused-import
 from utils import ALGOS, create_test_env, get_saved_hyperparams
 from utils.exp_manager import ExperimentManager
-from utils.load_from_hub import download_from_hub
+# from utils.load_from_hub import download_from_hub
 from utils.utils import StoreDict, get_model_path
 
 EXIT = False

@@ -48,7 +48,8 @@ import utils.import_envs  # noqa: F401 pytype: disable=import-error
 from utils.callbacks import SaveVecNormalizeCallback, TrialEvalCallback
 from utils.hyperparams_opt import HYPERPARAMS_SAMPLER
 from utils.utils import ALGOS, get_callback_list, get_latest_run_id, get_wrapper_class, linear_schedule
-
+#shilpa ppo_rlif
+from custom_rl_algos.ppo_rlif import PPO_RLIF
 
 class ExperimentManager:
     """
@@ -182,13 +183,26 @@ class ExperimentManager:
 
         self._hyperparams = self._preprocess_action_noise(hyperparams, saved_hyperparams, env)
 
+        #shilpa ppo_rlif
+        
+
         if self.continue_training:
             model = self._load_pretrained_agent(self._hyperparams, env)
         elif self.optimize_hyperparameters:
             return None
         else:
             # Train an agent from scratch
-            model = ALGOS[self.algo](
+            #shilpa ppo_rlif
+            # model = ALGOS[self.algo](
+            #     env=env,
+            #     tensorboard_log=self.tensorboard_log,
+            #     seed=self.seed,
+            #     verbose=self.verbose,
+            #     device=self.device,
+            #     **self._hyperparams,
+            # )
+
+             model = PPO_RLIF(
                 env=env,
                 tensorboard_log=self.tensorboard_log,
                 seed=self.seed,

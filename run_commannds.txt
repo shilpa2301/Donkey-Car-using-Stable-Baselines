@@ -1,1 +1,7 @@
 python rl-baselines3-zoo/train.py --algo tqc --env donkey-generated-roads-v0 --eval-freq 1 --eval-episodes 10 --n-eval-envs 1
+
+python train.py --custom-algo ppo_rlif --env donkey-generated-roads-v0 --eval-freq -1 --save-freq 25000
+python train.py --algo ppo --env donkey-generated-roads-v0 --eval-freq -1 --save-freq 25000
+
+/home/smukh039/work/zoo_repo/rl-baselines3-zoo/logs/ppo/donkey-generated-roads-v0_PPO_learned/rl_model_625000_steps.zip
+python enjoy.py --algo ppo --env donkey-generated-roads-v0 -f logs/ --exp-id PPO_learned --load-checkpoint 625000

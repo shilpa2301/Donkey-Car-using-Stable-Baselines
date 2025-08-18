@@ -36,6 +36,14 @@ except ImportError:
 import utils.import_envs  # noqa: F401 pytype: disable=import-error
 from utils.exp_manager import ExperimentManager
 from utils.utils import ALGOS, StoreDict, evaluate_policy_add_to_buffer
+#shilpa ppo_rlif
+from custom_rl_algos import ppo_rlif
+try:
+    custom_algos = dict(
+            ppo_rlif = ppo_rlif
+            )
+except ImportError:
+        custom_algos = {}
 
 seaborn.set()
 
@@ -164,6 +172,12 @@ if __name__ == "__main__":  # noqa: C901
     )
     parser.add_argument("--wandb-project-name", type=str, default="sb3", help="the wandb's project name")
     parser.add_argument("--wandb-entity", type=str, default=None, help="the entity (team) of wandb's project")
+    
+    #shilpa ppo_rlif
+    parser.add_argument(
+        "--custom-algo", help="Custom RL Algorithm", type=str, required=False, choices=list(custom_algos.keys())
+    )
+
     args = parser.parse_args()
 
     # Going through custom gym packages to let them register in the global registory
@@ -230,7 +244,9 @@ if __name__ == "__main__":  # noqa: C901
 
     exp_manager = ExperimentManager(
         args,
-        args.algo,
+        #shilpa ppo_rlif
+        # args.algo,
+        args.custom_algo,
         env_id,
         args.log_folder,
         args.tensorboard_log,
